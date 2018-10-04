@@ -1,0 +1,120 @@
+\documentclass[letterpaper, 11pt]{article}
+% \usepackage[hmargin = 1in, vmargin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{scrextend}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage[normalem]{ulem}
+\pgfplotsset{ticks=none}
+\setlength\parindent{0pt}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \rhead{Gabriel Wallace}
+% \lhead{MTH 730}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\inv}{^{-1}}
+
+\newcommand{\Def}{\textbf{Def} }
+\newcommand{\Pf}{\textbf{Proof} }
+\newcommand{\Qu}{\textbf{Q:} }
+\newcommand{\Cor}{\textbf{Corollary} }
+\newcommand{\Conj}{\textbf{Conjecture} }
+\newcommand{\Note}{\textbf{Note} }
+
+\title{Questions and Conjectures}
+\author{Gabriel Wallace}
+\date{}
+
+\begin{document}
+\maketitle
+
+For a knot, $K$, the following are equivalent:
+\begin{enumerate}[label=(\alph*)]
+	\item $K$ is tricolorable
+	\item $K$ is $S_3$-colorable
+	\item $K$ is $S_4$-colorable
+\end{enumerate}
+
+\Note For $n \geq 5$, then $S_n$-colorable does not imply $S_{n-1}$-colorable. The proof boils down
+to the fact that the only nontrivial normal subgroups of $S_n$ are $A_n$ for $n \geq 5$, and $A_n
+\not\cong S_{n-1}$.\\
+
+\Pf $(a) \iff (b)$ and $(c) \implies (b)$ are trivial. Perko proved $(b) \implies (c)$. He used high
+level homology. \Qu Is there an easier way?\\
+
+By $G$-colorable, we mean that there is a surjective homomorphism from the knot group, $K$ to $G$.
+i.e there exists some $\varphi$ such that
+\[\varphi: K \twoheadrightarrow G.\]
+
+\Conj If $T_k$ is $G$-colorable, and \sout{$a,b$ are the labels of any two strands} $a$ is the
+overstrand and $b$ is an understrand at any crossing, then $G = \langle a, b \rangle$ and $a, b$ are
+conjugate. \\
+
+\Cor $T_k$ is not $\binom{n}{2}$-colorable if $n \geq 4$. \\ 
+(Answer to \Qu For what $n$ is a twist knot $\binom{n}{2}$-colorable?)\\
+
+Dr. Rogers provides a short proof of $a, b$ being conjugate. \\
+
+The sketch of the proof is as follows:\\
+Without loss of generality, we label $a, b$ at the bottom of the knot. We continue up the twist
+portion labeling each strand on the left $a_k$ and the right $b_k$. Note that $b_k = a_{k-1}$. By
+observation we see 
+\begin{center}
+	\begin{tabular}{l c}
+		$k$ is odd: & $a_k = (a_{k-1})\inv b_{k-1} a_{k-1}$\\
+		$k$ is even: & $a_k = {a_{k-1}} b_{k-1} (a_{k-1})\inv$\\
+	\end{tabular}
+\end{center}
+
+Define $h = a\inv b$. Then,\\
+\begin{center}
+\begin{tabular}{l | c | c}
+	& $k$ odd & $k$ even\\
+	\hline
+	& &\\
+	Recursive & $a_k = h a_{k-1}$ & $a_k = a_{k-1} h\inv$\\
+	& &\\
+	Closed & $a_k = h^{\frac{1+k}{2}} a h^{\frac{1-k}{2}}$ & $a_k = h^{\frac{k}{2}} a h^{-\frac{k}{2}}$
+	& &\\
+\end{tabular}
+\end{center}
+
+At the top of the knot, we have two consistency equations, a left and right as follows:
+\begin{center}
+\begin{tabular}{l | c | c}
+	& $n$ odd & $n$ even\\
+	\hline
+	& &\\
+	Left & $a = a_n b a_n \inv$ & $a = a_n\inv b a_n$\\
+	& &\\
+	Right & $a_n = b b_n b\inv$ & $a_n = b\inv b_n b$
+	& &\\
+\end{tabular}
+\end{center}
+
+\\
+It's easy to show that left consistency equations hold if the right consistency equations hold. It's
+also easy to show that the equations in the above tables hold by induction.\\
+
+\begin{center}
+	\textbf{\Large Questions following the Conjecture}
+
+\end{center}
+\begin{enumerate}
+	\item Can this generalize to other knots? If so, what conditions need to be applied?
+		\begin{itemize}
+			\item Prime for sure by paper by Norwood.
+		\end{itemize}
+	\item Is there a prime knot that needs more than two generators?
+\end{enumerate}
+\end{center}
+
+\end{document}
