@@ -1,0 +1,34 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Gabriel Wallace}
+\lhead{Knot Theory}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\inv}{^{-1}}
+
+\begin{document}
+\textbf{Theorem} If $G$ colors a knot and every subgroup of $G$ is normal, then $G$ is cyclic.\\
+
+\emph{Proof.} Let $x$ be a label of a strand. If $G = \langle x \rangle$, then we are done. So assume
+$\cyclic{x} \subsetneq G$. Let $y$ label a strand and let $y \in G \setminus \cyclic{x}$. Then $x$
+and $y$ are conjugate. Thus, 
+$y = gxg\inv$ for some $ g \in G$
+and therefore $y \in g \cyclic{x} g\inv$. Since every subgroup of $G$ is normal, then $g\cyclic{x}
+g\inv = \cyclic{x}$. A contradiction, showing $y \notin G \setminus \cyclic{x}$, implying that $y
+\in \cyclic{x}$.  
+
+Now assume $y \in G$ does not label a strand. Let $L$ be the set of labels of the knot, so
+$\cyclic{L} = G$. Since $y$ does not label a strand then $y \in G \setminus L$. But, $L \subseteq
+\cyclic{x}$, so $G \subset \cyclic{x}$. A contradiction, showing that $G \cong \cyclic{x}$.  
+
+\end{document}
