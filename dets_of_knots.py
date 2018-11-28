@@ -8,7 +8,19 @@ def main():
         contents = f.read().split(',')
         contents = list(map(int, contents))
     hist_of_dets = count_elements(contents)
-    write_to_csv("Determinants of knots.csv", hist_of_dets)
+    with open("Determinants of knots.csv", "w") as f:
+        w = csv.writer(f)
+        w.writerows(hist_of_dets.items())
+    prime_list = list()
+    for num in contents:
+        prime_set = unique_prime_factors(num)
+        for p in prime_set:
+            prime_list.append(p)
+    hist_of_primes = count_elements(prime_list)
+    with open("Prime Dets.csv", "w") as f:
+        w = csv.writer(f)
+        w.writerows(hist_of_primes.items())
+
     
 def count_elements(seq):
     hist = dict()
@@ -16,19 +28,13 @@ def count_elements(seq):
         hist[i] = hist.get(i, 0) + 1
     return hist
 
-def write_to_csv(file_name, some_dict):
-    with open("file_name", "w") as f:
-        w = csv.writer(f)
-        w.writerows(some_dict.items())
-
 def unique_prime_factors(n):
     factors = list()
-    for i in range(3, int(math.sqrt(n)) + 1, 2):
+    for i in range(3, n + 1, 2):
         while n % i == 0:
             factors.append(i)
             n = n / i
     return set(factors)
-
 
 if __name__ == '__main__':
     main()
